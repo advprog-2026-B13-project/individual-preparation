@@ -11,8 +11,20 @@ public class VectorUtility {
     }
 
     public double[] subtract(double[] v1, double[] v2) {
-        // TODO: Implement me properly!
-        return new double[] { 0.0, 0.0, 0.0 };
+        if (v1 == null) throw new IllegalArgumentException("Vector v1 should not be null");
+        if (v2 == null) throw new IllegalArgumentException("Vector v2 should not be null");
+
+        if (v1.length != v2.length) throw new IllegalArgumentException("Vector v1 and v2 should have the same dimension");
+
+        int dimension = v1.length;
+        double[] resultVector = new double[dimension];
+
+        for (int index = 0; index < dimension; index++) {
+            double subtractResult = v1[index] - v2[index];
+            resultVector[index] = subtractResult;
+        }
+
+        return resultVector;
     }
 
     public double[] multiply(double[] v1, int x) {

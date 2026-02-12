@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ArithmeticUtility {
-    
+
     public double add(double o1, double o2) {
         // TODO: Implement me properly!
         return 0.0;
@@ -26,7 +26,21 @@ public class ArithmeticUtility {
     }
 
     public double exponent(double o1, int n) {
-        // TODO: Implement me properly!
-        return 0.0;
+        if (n < 0) {
+            throw new IllegalArgumentException("Negative exponent is not supported.");
+        }
+        if (n == 0) {
+            return 1.0;
+        }
+
+        // Binary Exponentiation
+        double result = exponent(o1, n / 2);
+        result *= result;
+
+        if (n % 2 == 1) {
+            result *= o1;
+        }
+
+        return result;
     }
 }

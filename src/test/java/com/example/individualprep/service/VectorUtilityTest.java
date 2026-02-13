@@ -1,10 +1,8 @@
-package com.example.individualprep;
+package com.example.individualprep.service;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
-
-import com.example.individualprep.service.VectorUtility;
 
 class VectorUtilityTest {
 

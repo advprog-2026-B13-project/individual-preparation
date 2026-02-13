@@ -17,7 +17,7 @@ public class VectorUtilityTest {
     public void setUp() {}
 
     @Test
-    public void testSubtract() {
+    public void testSubtract_positiveCase() {
         double toleranceDelta = 0.0001;
 
         double[] vector1 = {1, 4, 3};
@@ -29,8 +29,10 @@ public class VectorUtilityTest {
         vector2 = new double[]{0.2, 1.9, 4.5};
         subtractResult = vectorUtility.subtract(vector1, vector2);
         assertArrayEquals(new double[]{0.1, -0.7, 2.2}, subtractResult, toleranceDelta);
+    }
 
-        // Negative cases
+    @Test
+    public void testSubtract_nullInputs() {
         double[] invalid1Vector1 = null;
         double[] invalid1Vector2 = new double[]{1, 6, 7};
         assertThrows(IllegalArgumentException.class, () -> vectorUtility.subtract(invalid1Vector1, invalid1Vector2));
@@ -42,7 +44,10 @@ public class VectorUtilityTest {
         double[] invalid3Vector1 = null;
         double[] invalid3Vector2 = null;
         assertThrows(IllegalArgumentException.class, () -> vectorUtility.subtract(invalid3Vector1, invalid3Vector2));
+    }
 
+    @Test
+    public void testSubtract_mismatchedLength() {
         double[] invalid4Vector1 = {1};
         double[] invalid4Vector2 = {6, 7};
         assertThrows(IllegalArgumentException.class, () -> vectorUtility.subtract(invalid4Vector1, invalid4Vector2));

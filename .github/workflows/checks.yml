@@ -1,16 +1,17 @@
-name: CI
+name: Run code checks
 
 on:
   push:
     branches:
       - main
+      - ci/actions-b
   pull_request:
 
 permissions:
   contents: read
 
 jobs:
-  build-test:
+  checks:
     runs-on: ubuntu-latest
 
     steps:

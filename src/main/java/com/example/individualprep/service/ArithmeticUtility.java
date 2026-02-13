@@ -1,13 +1,21 @@
 package com.example.individualprep.service;
 
+import com.example.individualprep.controller.InvalidInputException;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ArithmeticUtility {
 
-    public double add(double o1, double o2) {
-        // TODO: Implement me properly!
-        return 0.0;
+    public double add(Double o1, Double o2) {
+        if (o1 == null) {
+            throw new InvalidInputException("Angka pertama tidak bisa null");
+        }
+
+        if (o2 == null) {
+            throw new InvalidInputException("Angka kedua tidak bisa null");
+        }
+
+        return o1 + o2;
     }
 
     public double subtract(double o1, double o2) {

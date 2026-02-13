@@ -26,13 +26,7 @@ public class VectorUtility {
     }
     
     public double norm(double[] v1) {
-        if (v1 == null || v1.length == 0) { return 0.0;}
-
-        double sum = 0.0;
-        for (double component : v1) {
-            sum += component * component;
-        }
-
-        return Math.sqrt(sum);
+        // TODO: Implement me properly!
+        return 0.0;
     }
 }

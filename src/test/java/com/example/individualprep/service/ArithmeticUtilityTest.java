@@ -3,7 +3,6 @@ package com.example.individualprep.service;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class ArithmeticUtilityTest {
 
@@ -29,7 +28,7 @@ class ArithmeticUtilityTest {
     }
 
     @Test
-    public void testDivide_positiveInputs() {
+    void testDivide_positiveInputs() {
         double toleranceDelta = 0.0001;
 
         double num = 2.5;
@@ -39,7 +38,7 @@ class ArithmeticUtilityTest {
     }
 
     @Test
-    public void testDivide_negativeInputs() {
+    void testDivide_negativeInputs() {
         double toleranceDelta = 0.0001;
 
         double num = -1.2;
@@ -56,7 +55,7 @@ class ArithmeticUtilityTest {
     }
 
     @Test
-    public void testDivide_zeroInputs() {
+    void testDivide_zeroInputs() {
         double num1 = 10;
         double divisor1 = 0;
         assertThrows(IllegalArgumentException.class, () -> arithmeticUtility.divide(num1, divisor1));

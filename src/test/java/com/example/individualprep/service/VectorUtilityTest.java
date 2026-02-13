@@ -58,6 +58,39 @@ public class VectorUtilityTest {
     }
 
     @Test
+    public void testMultiply_positiveCase() {
+        double[] vector1 = {1.0, 4.0, 3.0};
+        int multiplier = 2;
+        double[] multiplyResult = vectorUtility.multiply(vector1, multiplier);
+        assertArrayEquals(new double[]{2.0, 8.0, 6.0}, multiplyResult);
+
+        vector1 = new double[]{0.5, -1.2, 3.0};
+        multiplier = -2;
+        multiplyResult = vectorUtility.multiply(vector1, multiplier);
+        assertArrayEquals(new double[]{-1.0, 2.4, -6.0}, multiplyResult);
+
+        vector1 = new double[]{10.0, 20.0};
+        multiplier = 0;
+        multiplyResult = vectorUtility.multiply(vector1, multiplier);
+        assertArrayEquals(new double[]{0.0, 0.0}, multiplyResult);
+    }
+
+    @Test
+    public void testMultiply_emptyArray() {
+        double[] emptyVector = {};
+        int multiplier = 5;
+        double[] result = vectorUtility.multiply(emptyVector, multiplier);
+
+        assertEquals(0, result.length);
+    }
+
+    @Test
+    public void testMultiply_nullInput() {
+        double[] nullVector = null;
+        assertThrows(IllegalArgumentException.class, () -> vectorUtility.multiply(nullVector, 2));
+    }
+  
+    @Test
     void addReturnsEachElementsSum() {
         double[] v1 = { 1.0, -2.0, 3.5 };
         double[] v2 = { 4.0, 2.0, -1.5 };
@@ -126,9 +159,6 @@ public class VectorUtilityTest {
 
         result = vectorUtility.dotProduct(v1, v2);
 
-        // (0.5*2.0) + (1.5*-1.0) + (-2.0*3.0)
-        // = 1.0 - 1.5 - 6.0
-        // = -6.5
         assertEquals(-6.5, result, toleranceDelta);
     }
 

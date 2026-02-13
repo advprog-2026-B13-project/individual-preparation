@@ -1,5 +1,6 @@
 package com.example.individualprep.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
@@ -83,5 +84,31 @@ public class VectorUtilityTest {
 
         assertThrows(IllegalArgumentException.class, () -> vectorUtility.add(v1, v2));
 
+    }
+
+    @Test
+    void testNormVector() {
+        double[] v1 = { 3.0, 4.0, 0.0 };
+        double result = vectorUtility.norm(v1);
+        assertEquals(5.0, result, 1e-9);
+    }
+
+    @Test
+    void testNormVectorNull() {
+        double[] v1 = null;
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            vectorUtility.norm(v1);
+        });
+
+        assertEquals("Vector should not be null", exception.getMessage());
+    }
+
+    @Test
+    void testNormVectorEmpty() {
+        double[] v1 = {};
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            vectorUtility.norm(v1);
+        });
+        assertEquals("Vector should not be null", exception.getMessage());
     }
 }

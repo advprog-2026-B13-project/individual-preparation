@@ -26,4 +26,25 @@ class ArithmeticUtilityTest {
     void exponentThrowsWhenExponentIsNegative() {
         assertThrows(IllegalArgumentException.class, () -> arithmeticUtility.exponent(2.0, -1));
     }
+
+    @Test
+    void multiplyReturnsProductWhenPositiveNumbersAreMultiplied() {
+        double result = arithmeticUtility.multiply(2.0, 3.0);
+
+        assertEquals(6.0, result, 1e-9);
+    }
+
+    @Test
+    void multiplyReturnsPositiveWhenTwoNegativeNumbersAreMultiplied() {
+        double result = arithmeticUtility.multiply(-3.0, -5.0);
+
+        assertEquals(15.0, result, 1e-9);
+    }
+
+    @Test
+    void multiplyReturnsNegativeWhenOneNumberIsNegative() {
+        double result = arithmeticUtility.multiply(4.0, -2.0);
+
+        assertEquals(-8.0, result, 1e-9);
+    }
 }

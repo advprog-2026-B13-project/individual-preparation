@@ -83,4 +83,10 @@ public class VectorUtilityTest {
 
         assertEquals(0, result.length);
     }
+
+    @Test
+    public void testMultiply_nullInput() {
+        double[] nullVector = null;
+        assertThrows(NullPointerException.class, () -> vectorUtility.multiply(nullVector, 2));
+        }
 }

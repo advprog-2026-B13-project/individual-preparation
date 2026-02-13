@@ -1,6 +1,5 @@
 package com.example.individualprep.service;
 
-import com.example.individualprep.controller.InvalidInputException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -8,11 +7,11 @@ public class ArithmeticUtility {
 
     public double add(Double o1, Double o2) {
         if (o1 == null) {
-            throw new InvalidInputException("Angka pertama tidak bisa null");
+            throw new IllegalArgumentException("Angka pertama tidak bisa null");
         }
 
         if (o2 == null) {
-            throw new InvalidInputException("Angka kedua tidak bisa null");
+            throw new IllegalArgumentException("Angka kedua tidak bisa null");
         }
 
         return o1 + o2;

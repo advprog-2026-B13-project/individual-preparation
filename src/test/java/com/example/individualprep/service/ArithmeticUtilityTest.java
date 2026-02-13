@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
-import com.example.individualprep.controller.InvalidInputException;
-
 class ArithmeticUtilityTest {
 
     private final ArithmeticUtility arithmeticUtility = new ArithmeticUtility();
@@ -49,7 +47,7 @@ class ArithmeticUtilityTest {
 
     @Test
     void addThrowsExceptionWhenFirstArgumentIsNull() {
-        InvalidInputException exception = assertThrows(InvalidInputException.class, () -> {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             arithmeticUtility.add(null, 5.0);
         });
 
@@ -58,7 +56,7 @@ class ArithmeticUtilityTest {
 
     @Test
     void addThrowsExceptionWhenSecondArgumentIsNull() {
-        InvalidInputException exception = assertThrows(InvalidInputException.class, () -> {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             arithmeticUtility.add(5.0, null);
         });
 

@@ -20,9 +20,10 @@ public class ArithmeticUtility {
         return 0.0;
     }
 
-    public double divide(double o1, double o2) {
-        // TODO: Implement me properly!
-        return 0.0;
+    public double divide(double o1, double divisor) {
+        if (divisor == 0.0) throw new IllegalArgumentException("Divisor should not be zero!");
+
+        return o1 / divisor;
     }
 
     public double exponent(double o1, int n) {

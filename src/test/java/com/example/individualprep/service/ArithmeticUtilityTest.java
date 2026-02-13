@@ -26,4 +26,16 @@ class ArithmeticUtilityTest {
     void exponentThrowsWhenExponentIsNegative() {
         assertThrows(IllegalArgumentException.class, () -> arithmeticUtility.exponent(2.0, -1));
     }
+
+    @Test
+    void subtractReturnsCorrectDifference() {
+        double result = arithmeticUtility.subtract(10.0, 4.0);
+        assertEquals(6.0, result, 1e-9);
+    }
+
+    @Test
+    void subtractWorksWithNegativeNumbers() {
+        double result = arithmeticUtility.subtract(5.0, -3.0);
+        assertEquals(8.0, result, 1e-9);
+    }
 }

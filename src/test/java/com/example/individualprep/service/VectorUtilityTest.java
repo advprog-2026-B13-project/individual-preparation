@@ -1,13 +1,11 @@
 package com.example.individualprep.service;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 public class VectorUtilityTest {
@@ -110,5 +108,48 @@ public class VectorUtilityTest {
             vectorUtility.norm(v1);
         });
         assertEquals("Vector should not be null", exception.getMessage());
+    }
+
+    @Test
+    void dotProductReturnsCorrectValue() {
+        double toleranceDelta = 1e-9;
+
+        double[] v1 = { 1, 2, 3 };
+        double[] v2 = { 4, 5, 6 };
+
+        double result = vectorUtility.dotProduct(v1, v2);
+
+        assertEquals(32.0, result, toleranceDelta);
+
+        v1 = new double[] { 0.5, 1.5, -2.0 };
+        v2 = new double[] { 2.0, -1.0, 3.0 };
+
+        result = vectorUtility.dotProduct(v1, v2);
+
+        // (0.5*2.0) + (1.5*-1.0) + (-2.0*3.0)
+        // = 1.0 - 1.5 - 6.0
+        // = -6.5
+        assertEquals(-6.5, result, toleranceDelta);
+    }
+
+    @Test
+    void dotProductThrowsWhenNullVectorProvided() {
+        double[] v1 = null;
+        double[] v2 = { 1, 2, 3 };
+
+        assertThrows(IllegalArgumentException.class,
+                () -> vectorUtility.dotProduct(v1, v2));
+
+        assertThrows(IllegalArgumentException.class,
+                () -> vectorUtility.dotProduct(v2, null));
+    }
+
+    @Test
+    void dotProductThrowsWhenLengthMismatch() {
+        double[] v1 = { 1, 2 };
+        double[] v2 = { 1, 2, 3 };
+
+        assertThrows(IllegalArgumentException.class,
+                () -> vectorUtility.dotProduct(v1, v2));
     }
 }

@@ -56,4 +56,31 @@ public class VectorUtilityTest {
         double[] invalid5Vector2 = {5};
         assertThrows(IllegalArgumentException.class, () -> vectorUtility.subtract(invalid5Vector1, invalid5Vector2));
     }
+
+    @Test
+    public void testMultiply_positiveCase() {
+        double[] vector1 = {1.0, 4.0, 3.0};
+        int multiplier = 2;
+        double[] multiplyResult = vectorUtility.multiply(vector1, multiplier);
+        assertArrayEquals(new double[]{2.0, 8.0, 6.0}, multiplyResult);
+
+        vector1 = new double[]{0.5, -1.2, 3.0};
+        multiplier = -2;
+        multiplyResult = vectorUtility.multiply(vector1, multiplier);
+        assertArrayEquals(new double[]{-1.0, 2.4, -6.0}, multiplyResult);
+
+        vector1 = new double[]{10.0, 20.0};
+        multiplier = 0;
+        multiplyResult = vectorUtility.multiply(vector1, multiplier);
+        assertArrayEquals(new double[]{0.0, 0.0}, multiplyResult);
+    }
+
+    @Test
+    public void testMultiply_emptyArray() {
+        double[] emptyVector = {};
+        int multiplier = 5;
+        double[] result = vectorUtility.multiply(emptyVector, multiplier);
+
+        assertEquals(0, result.length);
+    }
 }
